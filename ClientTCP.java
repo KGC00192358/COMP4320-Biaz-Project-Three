@@ -38,7 +38,7 @@ class ClientTCP
 		long endTime = System.nanoTime();
 		long eTime = endTime - startTime;
 			System.out.println("Time of Request: " + eTime / 1000000 + "ms");
-			System.out.println("Input a Calculation Request (y/n)");
+			System.out.println("\nInput another Calculation Request (y/n)");
 			line = client.inFromKeyBoard.readLine();
 		}
 
@@ -124,8 +124,10 @@ class ClientTCP
 	public void handleAnswer() throws Exception {
 		DecoderBin dec = new DecoderBin();
 		Response resp = dec.decodeResponse(new DataInputStream(clientSocket.getInputStream()));
+		System.out.println("\nByte Array of Response: ");
 		resp.printByteArray();
-		System.out.println("Answer to reuquest #" + resp.RequestID + ": " + resp.Result);
-		
+		System.out.println();
+		System.out.println("Answer to request #" + resp.RequestID + ": " + resp.Result);
+		System.out.println();
 	}
 }     
